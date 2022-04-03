@@ -11,7 +11,6 @@ func _input(event):
 func _ready():
 	pass # Replace with function body.
 
-
-func _on_player_contact_ball(movement):
+func _on_player_contact_ball(pos):
 	if !game_started:
-		position += movement
+		position.x = pos

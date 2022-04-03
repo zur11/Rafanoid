@@ -16,8 +16,10 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("mover_derecha"):
 		var movement = Vector2(speed, 0)
 		var _bar_move = move_and_collide(movement)
-		emit_signal("contact_ball", movement)
+		var pos = position.x
+		emit_signal("contact_ball", pos)
 	if Input.is_action_pressed("mover_izquierda"):
 		var movement = Vector2(- speed, 0)
 		var _bar_move = move_and_collide(movement)
-		emit_signal("contact_ball", movement)
+		var pos = position.x
+		emit_signal("contact_ball", pos)
