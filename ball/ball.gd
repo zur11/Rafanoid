@@ -14,3 +14,14 @@ func _ready():
 func _on_player_contact_ball(pos):
 	if !game_started:
 		position.x = pos
+
+func _physics_process(_delta):
+	for body in get_colliding_bodies():
+		if body.is_in_group("gr_blocks"):
+			body.queue_free()
+			if body.get_parent().get_child_count() == 1:
+				print("GANA")
+				queue_free()
+	if position.y > 512:
+		print("PIERDE")
+		queue_free()
