@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal contact_ball
+
 const RIGHT = 1
 const LEFT = -1
 
@@ -12,6 +14,10 @@ func _ready():
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("mover_derecha"):
-		position.x += speed
+		var movement = Vector2(speed, 0)
+		move_and_collide(movement)
+		emit_signal("contact_ball", movement)
 	if Input.is_action_pressed("mover_izquierda"):
-		position.x -= speed
+		var movement = Vector2(- speed, 0)
+		move_and_collide(movement)
+		emit_signal("contact_ball", movement)
