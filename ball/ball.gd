@@ -13,6 +13,5 @@ func _ready():
 
 
 func _on_player_contact_ball(movement):
-	if linear_velocity <= Vector2(0,0):
+	if !game_started:
 		position += movement
-	
