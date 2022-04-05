@@ -25,3 +25,6 @@ func _physics_process(_delta):
 	if position.y > 512:
 		print("PIERDE")
 		queue_free()
+		var replay_scn = load("res://title/replay.tscn")
+		get_parent().add_child(replay_scn.instance())
+		get_tree().paused = true

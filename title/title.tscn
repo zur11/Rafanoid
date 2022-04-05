@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://environment/background.png" type="Texture" id=1]
 [ext_resource path="res://title/main_title.tscn" type="PackedScene" id=2]
 [ext_resource path="res://title/btn_start.tscn" type="PackedScene" id=3]
 [ext_resource path="res://title/btn_quit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://title/title.gd" type="Script" id=5]
 
 [node name="title" type="Node"]
+script = ExtResource( 5 )
 
 [node name="background" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -36,8 +38,22 @@ margin_top = 68.0
 margin_right = 208.0
 margin_bottom = 132.0
 
+[node name="btn" parent="title_margin/menu/btn_start" index="0"]
+margin_left = 72.0
+margin_right = 136.0
+
 [node name="btn_quit" parent="title_margin/menu" instance=ExtResource( 4 )]
 anchor_right = 0.0
 margin_top = 136.0
 margin_right = 208.0
 margin_bottom = 200.0
+
+[node name="btn" parent="title_margin/menu/btn_quit" index="0"]
+margin_left = 72.0
+margin_right = 136.0
+
+[connection signal="pressed" from="title_margin/menu/btn_start/btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="title_margin/menu/btn_quit/btn" to="." method="_on_quit_btn_pressed"]
+
+[editable path="title_margin/menu/btn_start"]
+[editable path="title_margin/menu/btn_quit"]

@@ -23,3 +23,5 @@ func _physics_process(_delta):
 		var _bar_move = move_and_collide(movement)
 		var pos = position.x
 		emit_signal("contact_ball", pos)
+	if Input.is_action_pressed("pausar"):
+		get_tree().paused = true
