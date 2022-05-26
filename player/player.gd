@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal contact_ball
+signal toogle_pause
 
 const RIGHT = 1
 const LEFT = -1
@@ -25,3 +26,6 @@ func _physics_process(_delta):
 		emit_signal("contact_ball", pos)
 	if Input.is_action_pressed("pausar"):
 		get_tree().paused = true
+		var game_paused = true
+		emit_signal("toogle_pause", game_paused)
+		pause_mode = Node.PAUSE_MODE_STOP
